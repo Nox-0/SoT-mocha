@@ -1,13 +1,13 @@
 <template>
-  <v-card>
-    <v-toolbar
+  <div>
+    <v-app-bar
       color="cyan"
+      dense
       dark
-      flat
     >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Money Coach. Secure your future with mind for spending.</v-toolbar-title>
+      <v-toolbar-title>Secure your future with mind for spending</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -20,7 +20,7 @@
         Goals
         <v-icon
           dark
-          right
+          center
         >
         </v-icon>
       </v-btn>
@@ -47,7 +47,7 @@
               Financial Wellbeing
               <v-icon
                 dark
-                right
+                center
               >
               </v-icon>
             </v-btn>
@@ -57,10 +57,10 @@
         color="cyan"
         dark
       >
-        User ID
+        Profile
         <v-icon
           dark
-          right
+          center
         >
         </v-icon>
       </v-btn>
@@ -69,45 +69,29 @@
         <v-icon>mdi-wrench</v-icon>
       </v-btn>
 
-      <v-btn icon>
-        <v-icon>mdi-minus-circle</v-icon>
-      </v-btn>
-
-      <template v-slot:extension>
-        <v-tabs
-          v-model="tab"
-          align-with-title
-        >
-          <v-tabs-slider color="yellow"></v-tabs-slider>
-
-          <v-tab
-            v-for="item in items"
-            :key="item"
-          >
-            {{ item }}
-          </v-tab>
-        </v-tabs>
-      </template>
-    </v-toolbar>
-
-    <v-tabs-items v-model="tab">
-      <v-tab-item
-        v-for="item in items"
-        :key="item"
+      <v-menu
+        left
+        bottom
       >
-        <v-card flat>
-          <v-card-text v-text="text"></v-card-text>
-        </v-card>
-      </v-tab-item>
-    </v-tabs-items>
-  </v-card>
-</template>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on"
+          >
+          </v-btn>
+        </template>
 
-<script>
-  export default {
-    data: () => ({
-      overlay: false,
-      zIndex: 0,
-    }),
-  }
-</script>
+        <v-list>
+          <v-list-item
+            v-for="n in 5"
+            :key="n"
+            @click="() => {}"
+          >
+            <v-list-item-title>Option {{ n }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-app-bar>
+  </div>
+</template>
