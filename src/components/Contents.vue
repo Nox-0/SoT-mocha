@@ -95,3 +95,12 @@
     </v-app-bar>
   </div>
 </template>
+
+<script>
+  export default {
+    data: () => ({
+      overlay: false,
+      zIndex: 0,
+    }),
+  }
+</script>
