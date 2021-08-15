@@ -32,25 +32,34 @@
           >
             <v-btn
               class="white--text"
-              color="teal"
+              color="#6f7887"
               @click="overlay = false"
             >
               Goals are set here!
             </v-btn>
           </v-overlay>
 
-      <v-btn
-              class="ma-2"
-              color="#393E46"
-              dark
-            >
-              Financial Wellbeing
-              <v-icon
-                dark
-                center
-              >
-              </v-icon>
-            </v-btn>
+    <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="#393E46"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Financial Wellbeing
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+          v-for="(item, index) in items"
+          :key="index"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+
 
     <v-btn
         class="ma-2"
@@ -105,6 +114,12 @@
     data: () => ({
       overlay: false,
       zIndex: 0,
+            items: [
+              { title: 'Financial Hardship' },
+              { title: 'Budget Services' },
+              { title: 'Support Programs' },
+              { title: 'Book a Session' },
+            ],
       })
   }
 </script>
