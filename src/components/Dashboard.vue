@@ -8,16 +8,16 @@
             :loading="loading"
             max-width="374">
           <template slot="progress">
-            <v-progress-linear
-                color="blue"
-                height="10"
-                indeterminate
-            ></v-progress-linear>
           </template>
           <v-img
               height="250"
-              src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+              :src="card.img_path"
           ></v-img>
+          <v-progress-linear
+                color="blue"
+                height="10"
+                :value=card.percentage
+            ></v-progress-linear>
           <v-card-title>{{card.title}}</v-card-title>
           <v-card-subtitle>{{card.id}}</v-card-subtitle>
           <v-card-actions>
@@ -76,15 +76,18 @@ export default {
       setTimeout(() => (this.loading = false), 2000)
       var card = {
         id: 0,
-        title: "Sample title",
-        img_path: "https://cdn.vuetifyjs.com/images/cards/cooking.png",
+        title: "House",
+        img_path: "https://www.interest.co.nz/sites/default/files/feature_images/house-cartoon_0.jpg",
         loading: false,
+        percentage: 20,
       }
+
       if (this.cards.length == 0) {
         this.cards.push(card)
       } else {
         card.id = this.cards[this.cards.length-1].id+1
-        this.cards.push(card)
+        card.percentage = card.percentage * card.id
+        this.cards.push(card)        
       }
       console.log(this.cards)
 
