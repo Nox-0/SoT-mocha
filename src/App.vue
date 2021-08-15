@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import Contents from './components/Contents';
-import infobox from './components/infobox';
+import Contents from '@/components/Contents';
+import infobox from '@/components/infobox';
 import Dashboard from "@/components/Dashboard";
 
 export default {
