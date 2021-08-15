@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-dialog max-width="750px">
-      <template v-slot:activator="{ on, attrs}">
+      <template v-slot:activator="{ on, attrs }">
         <v-btn
           color="blue"
           dark
@@ -22,6 +22,7 @@
               </v-col>
               <v-col>
                 <v-select
+                    v-model="goal"
                     :items="goals"
                     label="Choose a goal"
                     outlined>
@@ -33,7 +34,10 @@
                 <h2>Target Amount</h2>
               </v-col>
               <v-col>
-                <v-text-field required>
+                <v-text-field
+                    v-model="amount"
+                    required
+                label="$">
                 </v-text-field>
               </v-col>
             </v-row>
@@ -49,6 +53,7 @@
             </v-row>
             <v-row>
               <v-select
+                  v-model="business"
                 :items="businesses"
                 label="Add Voucher"
                 outlined>
@@ -62,7 +67,8 @@
                 ></v-checkbox>
               </v-col>
               <v-col>
-                <v-btn align="left">
+                <v-btn align="left"
+                @click="forminputfunc">
                   Add
                 </v-btn>
               </v-col>
@@ -77,15 +83,34 @@
 <script>
 export default {
   name: "cardInputForm.vue",
+  props: ["card"],
   data () {
     return {
+      goal: null,
+      amount: "",
+      business: null,
+      checkbox: null,
+      businesses: ["ANZ", "AA", "House of Travel", "Countdown", "Pak'n'Save", "The Warehouse"],
+      goals: ["Car", "House", "Travel"],
       picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+    }
+  },
+  methods: {
+    forminputfunc () {
+      var formInput = {}
+      formInput.id = this.card.id;
+      formInput.goal = this.goal;
+      formInput.amount = this.amount;
+      formInput.date = this.picker;
+      formInput.business = this.business;
+      formInput.checkbox = this.checkbox;
+      console.log(formInput)
+      this.$emit('inputted', formInput)
     }
   }
 }
 </script>
 
 <style scoped>
-$date-picker-table-height: 100px !default;
 
 </style>
