@@ -21,12 +21,7 @@
           <v-card-title>{{card.title}}</v-card-title>
           <v-card-subtitle>{{card.id}}</v-card-subtitle>
           <v-card-actions>
-            <v-btn
-                color="blue"
-                text
-                @click="add">
-              Add
-            </v-btn>
+            <cardInputForm/>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -62,8 +57,14 @@
 </template>
 
 <script>
+import cardInputForm from "./cardInputForm";
+
 export default {
   name: "Dashboard.vue",
+
+  components: {
+    cardInputForm,
+  },
 
   data: () => ( {
     loading: false,
