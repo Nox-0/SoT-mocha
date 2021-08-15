@@ -141,6 +141,10 @@ export default {
     checkbox: null,
     businesses: ["ANZ", "AA", "House of Travel", "Countdown", "Pak'n'Save", "The Warehouse"],
     goals: ["Car", "House", "Travel"],
+    img_paths: ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fclipartart.com%2Fimages%2Fmocha-clipart-6.jpg&f=1&nofb=1",
+      "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fclipartmag.com%2Fimages%2Fairplane-images-for-kids-clipart-2.png&f=1&nofb=1",
+      "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fotolip.com%2Fwp-content%2Fuploads%2F2016%2F05%2FCar-Clipart-1.png&f=1&nofb=1",
+      "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fimages.clipartpanda.com%2Fstipulation-clipart-House-10.png&f=1&nofb=1"],
     picker: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
   }),
 
@@ -151,12 +155,12 @@ export default {
       let card = {
         id: 0,
         goal: "Sample title",
-        img_path: "https://cdn.vuetifyjs.com/images/cards/cooking.png",
+        img_path: this.img_paths[0],
         amount: 0,
         business: null,
         checkbox: null,
         loading: false,
-        percentage: 20,
+        percentage: 0,
         date: new Date(Date.now()),
       }
       if (this.cards.length == 0) {
@@ -178,6 +182,16 @@ export default {
       card.business = this.business;
       card.checkbox = this.checkbox;
       card.date = this.picker;
+      if (this.goal == this.goals[0]) {
+        card.img_path = this.img_paths[2]
+      } else if (this.goal == this.goals[1]) {
+        card.img_path = this.img_paths[3]
+      } else if (this.goal == this.goals[2]) {
+        card.img_path = this.img_paths[1]
+      } else {
+        card.img_path = this.img_paths[0]
+      }
+      card.percentage = 20 * card.id;
 
       this.$set(this.cards, id, card)
       console.log(this.cards)
