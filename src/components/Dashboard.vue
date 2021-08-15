@@ -10,11 +10,13 @@
             max-width="374">
           <v-img
               height="250"
-              src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
+              :src="card.img_path"
           ></v-img>
           <v-progress-linear
-          :value="card.id">
-          </v-progress-linear>
+              color="blue"
+              height="10"
+              :value=card.percentage
+          ></v-progress-linear>
           <v-card-title>{{card.goal}}</v-card-title>
           <v-card-subtitle>${{card.amount}}<br/>{{card.date}}</v-card-subtitle>
           <v-card-actions>
@@ -125,7 +127,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Dashboard.vue",
 
@@ -155,12 +156,14 @@ export default {
         business: null,
         checkbox: null,
         loading: false,
+        percentage: 20,
         date: new Date(Date.now()),
       }
       if (this.cards.length == 0) {
         this.cards.push(card)
       } else {
         card.id = this.cards[this.cards.length-1].id+1
+        card.percentage = card.percentage * card.id
         this.cards.push(card)
       }
       console.log(this.cards)

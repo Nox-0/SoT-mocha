@@ -32,7 +32,7 @@ export default {
   components: {
     Contents,
     infobox,
-    Dashboard
+    Dashboard,
   },
 
   data: () => ({
