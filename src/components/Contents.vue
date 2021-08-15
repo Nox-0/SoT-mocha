@@ -1,19 +1,19 @@
 <template>
   <div>
     <v-app-bar
-      color="cyan"
+      color="#6f7887"
       dense
       dark
     >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Secure your future with mind for spending</v-toolbar-title>
+      <v-toolbar-title>Secure your future with mindful saving</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
 <v-btn
         class="ma-2"
-        color="cyan"
+        color="#393E46"
         @click="overlay = !overlay"
         dark
       >
@@ -41,7 +41,7 @@
 
       <v-btn
               class="ma-2"
-              color="cyan"
+              color="#393E46"
               dark
             >
               Financial Wellbeing
@@ -54,7 +54,7 @@
 
     <v-btn
         class="ma-2"
-        color="cyan"
+        color="#393E46"
         dark
       >
         Profile
@@ -82,6 +82,10 @@
           </v-btn>
         </template>
 
+        <v-card flat>
+                  <v-card-text v-text="text"></v-card-text>
+                </v-card>
+
         <v-list>
           <v-list-item
             v-for="n in 5"
@@ -101,6 +105,13 @@
     data: () => ({
       overlay: false,
       zIndex: 0,
-    }),
+      })
   }
 </script>
+
+<style>
+v-toolbar-title{
+    font-family: 'futura bold', sans-serif;
+
+}
+</style>
